@@ -52,4 +52,5 @@ sqlstr = 'SELECT org, count FROM Counts ORDER BY count DESC LIMIT 10'
 for row in cur.execute(sqlstr):
     print(str(row[0]), row[1])
 
+#close connection with DB
 cur.close()
