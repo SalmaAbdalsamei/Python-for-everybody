@@ -1,14 +1,16 @@
-#this assignment creates a new Database file and add data to added table
-#then select first raw after convert it's content to hex
-
-
+#----------------------------------------------------------------------
+#In this assignment I use python3 to create a new Database file 
+#Add a table (Ages)
+#Insert data to DB table using python code
+#select first raw after convertinhg it's content to ordered hexadecimal 
+#----------------------------------------------------------------------
 import sqlite3
 
 #connect to sqlite and create a new file
 connection = sqlite3.connect('first')
 cur= con.cursor()
 
-#delete existing data then create new one
+#delete existing data then create a new one
 cur.execute('DROP TABLE IF EXISTS Ages')
 cur.execute('''CREATE TABLE Ages (
   name VARCHAR(128),
