@@ -1,3 +1,9 @@
+#----------------------------------------------------------------------
+#In this assignment I use python3 to create a new Database file 
+#Add a table (Counts)
+#Insert data to DB table from text file
+#query to find the organization that sent maximum number of e-mails
+#----------------------------------------------------------------------
 import sqlite3
 
 #connect to sqlite and create a new file
@@ -18,7 +24,7 @@ for line in fileData:
     if not line.startswith('From: ') : continue
     pieces = line.split()
     email = pieces[1]
-    #find each mail organization
+    #find each mail organization [last item in the list]
     parts = email.split('@')
     org = parts[-1]
     #--to test--
