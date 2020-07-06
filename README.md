@@ -1,2 +1,2 @@
 # Python-for-everybody
-Assignments of coursera python specialization (5 courses).
+Assignments of Coursera Python specialization (5 courses).
