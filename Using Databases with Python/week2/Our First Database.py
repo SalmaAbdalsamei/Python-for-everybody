@@ -5,7 +5,7 @@
 import sqlite3
 
 #connect to sqlite and create a new file
-con = sqlite3.connect('first')
+connection = sqlite3.connect('first')
 cur= con.cursor()
 
 #delete existing data then create new one
@@ -21,8 +21,10 @@ insertV = [('Maisey', 39),
              ('Marco', 36),
             ('Zakaria', 36),]
 cur.executemany('INSERT INTO Ages VALUES (?,?)', insertV)
-con.commit()
 
+connection.commit()
+
+#select first raw after converting it's content into hex
 sqlstr ='SELECT hex(name || age) AS X FROM Ages ORDER BY X'
 for raw in cur.execute(sqlstr):
     print(raw)
