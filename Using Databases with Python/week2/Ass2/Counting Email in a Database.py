@@ -1,7 +1,7 @@
 #----------------------------------------------------------------------
 #In this assignment I use python3 to create a new Database file 
-#Add a table (Counts)
-#Insert data to DB table from text file
+#Add a table (Counts)=(org"str"-count"int")
+#Insert data to DB table from a text file
 #query to find the organization that sent maximum number of e-mails
 #----------------------------------------------------------------------
 import sqlite3
