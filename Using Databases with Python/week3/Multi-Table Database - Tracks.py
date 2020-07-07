@@ -1,3 +1,10 @@
+#----------------------------------------------------------------------
+#In this assignment I use python3 to create a new Database file 
+#Add a many tables
+#Insert data to DB tables from a Xml file
+#connect tables with forien key and primary key
+#get new table by using (join) on many tables 
+#----------------------------------------------------------------------
 import xml.etree.ElementTree as ET
 import sqlite3
 
@@ -37,6 +44,7 @@ CREATE TABLE Track (
     len INTEGER, rating INTEGER, count INTEGER
 );''')
 
+#function to get the each table data from the xml
 def lookup(d,colName):
     found = False
     for child in d :
@@ -45,9 +53,11 @@ def lookup(d,colName):
             found = True
     return None
 
+#read the selected xml file 
 fileName = input('Enter fileName: ')
 if len(fileName) < 1: fileName = 'Library.xml'
 stuff = ET.parse(fileName)
+#navigate to data section
 results = stuff.findall('dict/dict/dict')
 
 # search for data in xml file
