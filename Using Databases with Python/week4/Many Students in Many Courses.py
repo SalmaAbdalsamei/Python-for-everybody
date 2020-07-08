@@ -12,7 +12,7 @@ import sqlite3
 conn = sqlite3.connect('rosterdb.sqlite')
 cur = conn.cursor()
 
-# Do some setup
+# DB setup drop then add 
 cur.executescript('''
 DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Member;
@@ -36,6 +36,7 @@ CREATE TABLE Member (
 )
 ''')
 
+#read datafrom json file
 fname = input('Enter file name: ')
 if len(fname) < 1:
     fname = 'roster_data.json'
@@ -47,14 +48,17 @@ if len(fname) < 1:
 str_data = open(fname).read()
 json_data = json.loads(str_data)
 
+#extract data from each line in the file
 for entry in json_data:
 
     name = entry[0];
     title = entry[1];
     role = entry[2];
-
+    
+    #check
     #print((name, title,role))
 
+    #fill DB with json data 
     cur.execute('''INSERT OR IGNORE INTO User (name)
         VALUES ( ? )''', ( name, ) )
     cur.execute('SELECT id FROM User WHERE name = ? ', (name, ))
@@ -69,6 +73,7 @@ for entry in json_data:
         (user_id, course_id,role) VALUES ( ?, ? ,? )''',
         ( user_id, course_id,role ) )
 
+    #save data in DB sqlite
     conn.commit()
   
 # print first row
@@ -77,4 +82,5 @@ for row in cur.execute(sqlstr) :
     print (row)
     break
 
+#close connection
 cur.close()
